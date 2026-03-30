@@ -12,24 +12,29 @@ int main()
 
 #include <stdio.h>
 #include <stdlib.h>
+
 ///2.1
 int sum(int a, int b){
     int suma = a + b;
     return suma;
 }
+
 ///2.2
 int sumVals(int *a, int *b){
     int wsksuma = *a + *b;
     return wsksuma;
 }
+
 ///2.3
 void addPtr(int *x, int *y, int *z){
 *z = *x + *y;
 }
+
 ///zadanie 3
 void copyInt(int x, int *w){
 *w = x;
 }
+
 ///zadanie 4
 double findMax(const double num1, const double *num2){
 if (num1 > *num2){
@@ -38,8 +43,9 @@ if (num1 > *num2){
     return *num2;
     }
 }
+
 ///zadanie 5
-int* initInts(){
+int *initInts(){
     int *tablica = (int*)malloc(3*sizeof(int));
     tablica[0] = 5;
     tablica[1] = -12;
@@ -48,7 +54,38 @@ int* initInts(){
 
 }
 
-///zadanie sumToPtr
+///zadanie 8
+void sumToPtr(const int *a, const int *b, int *c){
+*c = *a + *b;
+}
+
+///zadanie 11
+int sumSqrs(const int *num1, int *const num2){
+return (*num1 * *num1) + (*num2 * *num2);
+}
+
+///zadanie 14
+double multPtrs(const double *num1, double *const num2){
+return (*num1) * (*num2);
+}
+
+///zadanie 16
+void swap(int *ptr1, int*ptr2){
+    *ptr1 = *ptr1 ^ *ptr2;
+    *ptr2 = *ptr1 ^ *ptr2;
+    *ptr1 = *ptr1 ^ *ptr2;
+    }
+
+///zadanie 17
+void swapSign(double *ptr1, double *ptr2){
+    if (*ptr1 * *ptr2 <= 0){
+    double x = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = x;
+    }
+    }
+
+
 
 
 int main()
@@ -85,9 +122,42 @@ int main()
     double Y = 2.2;
     double wynik = findMax(X, &Y);
     printf("%f", wynik);
-      */
+
 
     ///zadanie 5
     int *tablica1 = initInts();
     printf("%d", *tablica1);
+
+
+    ///zadanie 8
+    const int a = 5;
+    const int b = 10;
+    int c = 0;
+    sumToPtr(&a, &b, &c);
+    printf("%d", c);
+
+    ///Zadanie 11
+    const int a = 5;
+    int b = 10;
+    int wynik = sumSqrs(&a, &b);
+    printf("%d", wynik);
+            */
+    ///zadanie14
+    double a = 5.1;
+    double b = 1.5;
+    double wynik = multPtrs(&a, &b);
+    printf("%f", wynik);
+/*
+    ///zadanie 16
+    int a = 10;
+    int b = 27;
+    swap(&a, &b);
+    printf("a = %d, b = %d", a, b);
+
+    ///zadanie 17
+    double a = 10.1;
+    double b = -27.2;
+    swapSign(&a, &b);
+    printf("a = %f, b = %f", a, b);
+*/
 }
